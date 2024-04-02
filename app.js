@@ -17,15 +17,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use("/api/users", userRouter);
-app.use("/models", express.static(path.join(__dirname, "models")));
-// app.use("/static", express.static(__dirname + "/client/static"));
-app.use("/static", express.static(path.join(__dirname, "client", "static")));
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "client", "index.html"));
-});
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/client/index.html");
-});
+// app.use("/models", express.static(path.join(__dirname, "models")));
+// // app.use("/static", express.static(__dirname + "/client/static"));
+// app.use("/static", express.static(path.join(__dirname, "client", "static")));
+// app.get("*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "client", "index.html"));
+// });
+// app.get("/", (req, res) => {
+//   res.sendFile(__dirname + "/client/index.html");
+// });
 const PORT = 3000;
 mongoose
   .connect(
