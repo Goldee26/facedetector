@@ -1,12 +1,19 @@
-import express from "express";
-import mongoose from "mongoose";
-import cors from "cors";
-import userRouter from "./routes/user-routes.js";
-import { fileURLToPath } from "url";
-import path from "path";
+// import express from "express";
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const userRouter = require("./routes/user-routes.js");
+const fileURLToPath = require("url");
+const path = require("path");
+
+// import mongoose from "mongoose";
+// import cors from "cors";
+// import userRouter from "./routes/user-routes.js";
+// import { fileURLToPath } from "url";
+// import path from "path";
 const app = express();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 app.use(express.json());
 app.use(cors());
 app.use("/api/users", userRouter);
@@ -34,4 +41,5 @@ mongoose
     console.error("Error connecting to MongoDB:", error);
   });
 
-export default app;
+// export default app;
+module.exports = app;

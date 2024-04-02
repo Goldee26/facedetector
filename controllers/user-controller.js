@@ -1,5 +1,7 @@
-import User from "../model/User.js";
-import * as faceapi from "face-api.js";
+// import User from "../model/User.js";
+const User = require("../model/User");
+const faceapi = require("face-api.js");
+// import * as faceapi from "face-api.js";
 const convertDescriptorToArray = (desc) => {
   const parsedDescriptor = JSON.parse(desc);
   console.log(parsedDescriptor);
@@ -8,7 +10,7 @@ const convertDescriptorToArray = (desc) => {
   );
   return requiredDescriptor;
 };
-export const signup = async (req, res, next) => {
+const signup = async (req, res, next) => {
   const { name, email, descriptor } = req.body;
   let existingUser;
   console.log(name + " " + email + " " + descriptor);
@@ -38,7 +40,7 @@ export const signup = async (req, res, next) => {
   return res.status(201).json({ user });
 };
 
-export const login = async (req, res, next) => {
+const login = async (req, res, next) => {
   const { email, descriptor } = req.body;
   console.log(descriptor);
   let userPresent;
@@ -69,4 +71,9 @@ export const login = async (req, res, next) => {
     return res.status(400).json({ message: "Incorrect Password" });
   }
   return res.status(200).json({ message: "Login Successfull" });
+};
+
+module.exports = {
+  signup,
+  login,
 };
